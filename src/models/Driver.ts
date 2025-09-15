@@ -1,8 +1,13 @@
 import { Schema, model, Document } from 'mongoose';
 
+interface ITieredRate {
+  upToKm: number;
+  rate: number;
+}
+
 interface IPricing {
   baseRate: number;
-  ratePerKm: number;
+  tieredRates: ITieredRate[];
   ratePerMinute: number;
   nightSurcharge: number;
   weekendSurcharge: number;
@@ -20,9 +25,14 @@ interface IDriver extends Document {
   updatedAt: Date;
 }
 
+const TieredRateSchema = new Schema<ITieredRate>({
+  upToKm: { type: Number, required: true },
+  rate: { type: Number, required: true },
+}, { _id: false });
+
 const PricingSchema = new Schema<IPricing>({
   baseRate: { type: Number, required: true, default: 0 },
-  ratePerKm: { type: Number, required: true, default: 0 },
+  tieredRates: { type: [TieredRateSchema], required: true, default: [] },
   ratePerMinute: { type: Number, required: true, default: 0 },
   nightSurcharge: { type: Number, required: true, default: 0 },
   weekendSurcharge: { type: Number, required: true, default: 0 },
