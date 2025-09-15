@@ -13,6 +13,7 @@ interface IPricing {
   weekendSurchargePerKm: number;
   holidaySurchargePerKm: number;
   driverProvince: string;
+  applyWeekendSurchargeOnHoliday: boolean;
   freeSuitcasesPerPassenger: number;
   surchargePerExtraSuitcase: number;
   passengerSurchargeEnabled: boolean;
@@ -41,6 +42,7 @@ const PricingSchema = new Schema<IPricing>({
   weekendSurchargePerKm: { type: Number, required: true, default: 0 },
   holidaySurchargePerKm: { type: Number, required: true, default: 0 },
   driverProvince: { type: String, required: true, default: '' },
+  applyWeekendSurchargeOnHoliday: { type: Boolean, required: true, default: true },
   freeSuitcasesPerPassenger: { type: Number, required: true, default: 1 },
   surchargePerExtraSuitcase: { type: Number, required: true, default: 0 },
   passengerSurchargeEnabled: { type: Boolean, required: true, default: false },
