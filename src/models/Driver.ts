@@ -9,9 +9,12 @@ interface IPricing {
   baseRate: number;
   tieredRates: ITieredRate[];
   ratePerMinute: number;
-  nightSurcharge: number;
-  weekendSurcharge: number;
-  luggageSurcharge: number;
+  nightSurchargePerKm: number;
+  weekendSurchargePerKm: number;
+  holidaySurchargePerKm: number;
+  driverProvince: string;
+  freeSuitcasesPerPassenger: number;
+  surchargePerExtraSuitcase: number;
   passengerSurchargeEnabled: boolean;
   minPassengersForSurcharge: number;
   surchargePerKmPerExtraPassenger: number;
@@ -34,9 +37,12 @@ const PricingSchema = new Schema<IPricing>({
   baseRate: { type: Number, required: true, default: 0 },
   tieredRates: { type: [TieredRateSchema], required: true, default: [] },
   ratePerMinute: { type: Number, required: true, default: 0 },
-  nightSurcharge: { type: Number, required: true, default: 0 },
-  weekendSurcharge: { type: Number, required: true, default: 0 },
-  luggageSurcharge: { type: Number, required: true, default: 0 },
+  nightSurchargePerKm: { type: Number, required: true, default: 0 },
+  weekendSurchargePerKm: { type: Number, required: true, default: 0 },
+  holidaySurchargePerKm: { type: Number, required: true, default: 0 },
+  driverProvince: { type: String, required: true, default: '' },
+  freeSuitcasesPerPassenger: { type: Number, required: true, default: 1 },
+  surchargePerExtraSuitcase: { type: Number, required: true, default: 0 },
   passengerSurchargeEnabled: { type: Boolean, required: true, default: false },
   minPassengersForSurcharge: { type: Number, required: true, default: 1 },
   surchargePerKmPerExtraPassenger: { type: Number, required: true, default: 0 },
