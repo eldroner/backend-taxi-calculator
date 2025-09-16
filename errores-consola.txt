@@ -1,95 +1,64 @@
-[nodemon] 3.1.10
-[nodemon] to restart at any time, enter `rs`
-[nodemon] watching path(s): *.*
-[nodemon] watching extensions: ts,json
-[nodemon] starting `ts-node src/index.ts`
-[dotenv@17.2.2] injecting env (2) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
-Connected to MongoDB
-Server running on port 5000
-
-En la consola del navegador sale esto:
-
-
-admin-panel.component.ts:48 
- GET http://localhost:5000/api/drivers/driver123 404 (Not Found)
-loadPricing	@	admin-panel.component.ts:48
-ngOnInit	@	admin-panel.component.ts:44
-Promise.then		
-(anonymous)	@	main.ts:5
-
-
-En el Network:
-
-Headers:
-
-
-1 / 24 requests
-0.3 kB / 2.5 kB transferred
-0.0 kB / 2,829 kB resources
-Finish: 272 ms
-DOMContentLoaded: 232 ms
-Request URL
-http://localhost:5000/api/drivers/driver123
-Request Method
-GET
-Status Code
-404 Not Found
-Remote Address
-[::1]:5000
-Referrer Policy
-strict-origin-when-cross-origin
-access-control-allow-origin
-*
-connection
-keep-alive
-content-length
-30
-content-type
-application/json; charset=utf-8
-date
-Sun, 14 Sep 2025 14:18:59 GMT
-etag
-W/"1e-4Z7n9qcLW33wCpkrpjAXqq2W7v0"
-keep-alive
-timeout=5
-x-powered-by
-Express
-accept
-application/json, text/plain, */*
-accept-encoding
-gzip, deflate, br, zstd
-accept-language
-es-ES,es;q=0.9,en;q=0.8
-connection
-keep-alive
-host
-localhost:5000
-origin
-http://localhost:4200
-referer
-http://localhost:4200/
-sec-ch-ua
-"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"
-sec-ch-ua-mobile
-?0
-sec-ch-ua-platform
-"Windows"
-sec-fetch-dest
-empty
-sec-fetch-mode
-cors
-sec-fetch-site
-same-site
-user-agent
-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
-
-En el preview y Response sale solo:
-
-{message: "Driver not found"}
-message
-: 
-"Driver not found"
-
-Response:
-
-{"message":"Driver not found"}
+==> It looks like we don't have access to your repo, but we'll try to clone it anyway.
+==> Cloning from https://github.com/eldroner/backend-taxi-calculator
+==> Checking out commit 4937ef06f2146ad177fc9685a0c5417bcb13ef73 in branch main
+==> Using Node.js version 22.16.0 (default)
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Running build command 'npm install'...
+> taxi-calculator-backend@1.0.0 postinstall
+> npm run build
+> taxi-calculator-backend@1.0.0 build
+> tsc
+up to date, audited 160 packages in 6s
+24 packages are looking for funding
+  run `npm fund` for details
+found 0 vulnerabilities
+==> Uploading build...
+==> Uploaded in 4.7s. Compression took 1.8s
+==> Build successful 🎉
+==> Deploying...
+==> Running 'node dist/index.js'
+[dotenv@17.2.2] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+==> Application exited early
+==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+==> Running 'node dist/index.js'
+[dotenv@17.2.2] injecting env (0) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+MongoDB connection error: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
+    at _handleConnectionErrors (/opt/render/project/src/node_modules/mongoose/lib/connection.js:1165:11)
+    at NativeConnection.openUri (/opt/render/project/src/node_modules/mongoose/lib/connection.js:1096:11) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-yr6xln3-shard-00-01.q35navj.mongodb.net:27017' => [ServerDescription],
+      'ac-yr6xln3-shard-00-02.q35navj.mongodb.net:27017' => [ServerDescription],
+      'ac-yr6xln3-shard-00-00.q35navj.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-pansco-shard-0',
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined,
+  cause: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-yr6xln3-shard-00-01.q35navj.mongodb.net:27017' => [ServerDescription],
+      'ac-yr6xln3-shard-00-02.q35navj.mongodb.net:27017' => [ServerDescription],
+      'ac-yr6xln3-shard-00-00.q35navj.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-pansco-shard-0',
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  }
+}
