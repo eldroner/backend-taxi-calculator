@@ -9,6 +9,7 @@ const PricingSchema = new mongoose_1.Schema({
     baseRate: { type: Number, required: true, default: 0 },
     tieredRates: { type: [TieredRateSchema], required: true, default: [] },
     ratePerMinute: { type: Number, required: true, default: 0 },
+    minFare: { type: Number, required: true, default: 0 }, // Added minFare to PricingSchema
     nightSurchargePerKm: { type: Number, required: true, default: 0 },
     weekendSurchargePerKm: { type: Number, required: true, default: 0 },
     holidaySurchargePerKm: { type: Number, required: true, default: 0 },
@@ -23,7 +24,9 @@ const PricingSchema = new mongoose_1.Schema({
 const DriverSchema = new mongoose_1.Schema({
     driverId: { type: String, required: true, unique: true },
     name: { type: String, required: true },
+    email: { type: String, required: true, unique: true }, // Added email to schema
     pricing: { type: PricingSchema, required: true },
+    embedSnippet: { type: String, default: '' }, // Added embedSnippet to schema
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 });

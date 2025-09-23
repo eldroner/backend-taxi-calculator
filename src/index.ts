@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import driverRoutes from './routes/driver.routes'; // Import driver routes
+import authRoutes from './routes/auth.routes'; // Import auth routes
+import calculationRoutes from './routes/calculation.routes'; // Import calculation routes
 import axios from 'axios';
 
 dotenv.config();
@@ -14,8 +16,14 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taxica
 app.use(cors());
 app.use(express.json());
 
+// Use auth routes
+app.use('/api/auth', authRoutes);
+
 // Use driver routes
 app.use('/api/drivers', driverRoutes);
+
+// Use calculation routes
+app.use('/api/calculate', calculationRoutes);
 
 // Holiday check endpoint using Nager.Date API
 app.get('/api/holidays', async (req, res) => {

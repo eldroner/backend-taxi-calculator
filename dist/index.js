@@ -17,6 +17,8 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const driver_routes_1 = __importDefault(require("./routes/driver.routes")); // Import driver routes
+const auth_routes_1 = __importDefault(require("./routes/auth.routes")); // Import auth routes
+const calculation_routes_1 = __importDefault(require("./routes/calculation.routes")); // Import calculation routes
 const axios_1 = __importDefault(require("axios"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -24,8 +26,12 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taxicalculator';
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
+// Use auth routes
+app.use('/api/auth', auth_routes_1.default);
 // Use driver routes
 app.use('/api/drivers', driver_routes_1.default);
+// Use calculation routes
+app.use('/api/calculate', calculation_routes_1.default);
 // Holiday check endpoint using Nager.Date API
 app.get('/api/holidays', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { date, province } = req.query; // date: YYYY-MM-DD, province: ISO 3166-2 code (e.g., MD for Madrid)
