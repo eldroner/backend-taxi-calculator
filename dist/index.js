@@ -24,17 +24,9 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taxicalculator';
-const allowedOrigins = ['https://taxi-config.pixelnova.es', 'http://localhost:4200', 'http://localhost:8080', null];
+const allowedOrigins = ['https://taxi-config.pixelnova.es', 'http://localhost:4200', 'http://localhost:8080', 'https://pixelnova.es', null];
 const corsOptions = {
-    origin: (origin, callback) => {
-        console.log('CORS Origin received:', origin);
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        }
-        else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: '*',
     optionsSuccessStatus: 200
 };
 app.use((0, cors_1.default)(corsOptions));
