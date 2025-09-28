@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taxicalculator';
 
 
-const allowedOrigins = ['https://taxi-config.pixelnova.es', 'http://localhost:4200', null];
+const allowedOrigins = ['https://taxi-config.pixelnova.es', 'http://localhost:4200', 'http://localhost:8080', null];
 
 const corsOptions = {
           origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
