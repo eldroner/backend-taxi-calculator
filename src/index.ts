@@ -14,12 +14,20 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taxicalculator';
 
 
+const allowedOrigins = ['https://taxi-config.pixelnova.es', 'http://localhost:4200'];
+
 const corsOptions = {
-  origin: 'https://taxi-config.pixelnova.es',
+  origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   optionsSuccessStatus: 200
 };
-app.use(cors(corsOptions));
 
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
