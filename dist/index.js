@@ -24,7 +24,11 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taxicalculator';
-app.use((0, cors_1.default)());
+const corsOptions = {
+    origin: 'https://taxi-config.pixelnova.es',
+    optionsSuccessStatus: 200
+};
+app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
 // Use auth routes
 app.use('/api/auth', auth_routes_1.default);

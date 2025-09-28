@@ -13,7 +13,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taxicalculator';
 
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://taxi-config.pixelnova.es',
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+
 app.use(express.json());
 
 // Use auth routes
