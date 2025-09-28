@@ -22,7 +22,7 @@ const protect = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
             // Get token from header
             token = req.headers.authorization.split(' ')[1];
             // Verify token
-            const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET || 'your_default_secret');
+            const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET || 'secret');
             // Get user from the token
             req.user = yield user_model_1.default.findById(decoded.id).select('-password');
             if (!req.user) {
