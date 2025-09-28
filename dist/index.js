@@ -27,7 +27,8 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taxica
 const allowedOrigins = ['https://taxi-config.pixelnova.es', 'http://localhost:4200', null];
 const corsOptions = {
     origin: (origin, callback) => {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        console.log('CORS Origin received:', origin);
+        if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         }
         else {
